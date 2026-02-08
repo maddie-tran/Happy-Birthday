@@ -1,0 +1,253 @@
+body {
+  font-family: Arial, sans-serif;
+  background-color: #e6f3ff;
+  text-align: center;
+  margin-top: 100px;
+  cursor: none;
+}
+
+.custom-cursor {
+  width: 30px;
+  height: 30px;
+  background-image: url('Boofie/heart-cursor.png');
+  border: 2px solid #E3F2FD;
+  border-radius: 50%;
+  position: fixed;
+  pointer-events: none;
+  transform: translate(-50%, -50%);
+  filter: drop-shadow(0 0 5px rgba(227, 242, 253, 0.5));
+  transition: background-color 0.2s, transform 0.1s;
+}
+.custom-cursor.hover {
+  background-color: #E3F2FD;
+  transform: translate(-50%, -50%) scale(1.5);
+}
+
+button {
+  padding: 10px 20px;
+  font-size: 16px;
+  cursor: pointer;
+  color: black;
+  text-align: center;
+  border-radius: 10px;
+  background-color:aliceblue;
+}
+
+#loginBtn {
+  margin-top: 75px;
+}
+
+#passwordScreen h2 {
+  margin-top: 75px;
+}
+#passwordInput {
+  padding: 10px;
+  font-size: 16px;
+  border-radius: 5px;
+  border: 1px solid #ccc;
+  margin-top: 20px;
+}
+#submitBtn {
+  margin-top: 20px;
+}
+
+#birthdayScreen h2 {
+  text-align: center;
+  margin-top: 30px;
+}
+#birthdayScreen p {
+  text-align: center;
+  margin-top: 30px;
+}
+
+#surpriseBtn {
+  text-align: center;
+  margin-top: 50px;
+}
+
+.card-wrapper[data-card="5"] .card-front img {
+    object-position: center 20%;  /* moves image down */
+}
+
+.hidden {
+    display: none;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.title {
+    font-size: 2.5rem;
+    font-weight: bold;
+    text-align: center;
+    color: black;
+    margin-bottom: 3rem;
+}
+
+.cards-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1.5rem;
+    max-width: 900px;
+    margin: 0 auto;
+    position: relative;
+}
+
+.card-wrapper {
+    position: relative;
+    cursor: pointer;
+    transition: all 0.5s ease;
+}
+
+.card-wrapper:hover:not(.active) .card {
+    transform: scale(1.05);
+}
+
+.card {
+    position: relative;
+    width: 100%;
+    height: 16rem;
+    perspective: 1000px;
+    transition: all 0.5s ease;
+    transform-style: preserve-3d;
+}
+
+.card-front,
+.card-back {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    border-radius: 1rem;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+    backface-visibility: hidden;
+    overflow: hidden;
+}
+
+.card-front {
+    background: #fff;
+}
+
+.card-front img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.card-overlay {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background: linear-gradient(to top, rgba(0, 0, 0, 0.6), transparent);
+    padding: 1.5rem;
+    display: flex;
+    align-items: flex-end;
+    justify-content: center;
+}
+
+.card-overlay p {
+    color: white;
+    font-weight: 600;
+    font-size: 1.125rem;
+}
+
+.card-back {
+    background: linear-gradient(135deg, #ffc0cb 0%, #e1bee7 50%, #bbdefb 100%);
+    transform: rotateY(180deg);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 2rem;
+}
+
+.message {
+    text-align: center;
+}
+
+.message > p:first-child {
+    font-size: 1.25rem;
+    line-height: 1.75;
+    color: #1f2937;
+    font-weight: 500;
+}
+
+.close-hint {
+    margin-top: 1.5rem;
+    font-size: 0.875rem;
+    color: #4b5563;
+}
+
+.footer-text {
+    text-align: center;
+    margin-top: 3rem;
+    color: #4b5563;
+    font-size: 1rem;
+}
+
+/* Active card styles */
+.card-wrapper.active {
+    position: fixed;
+    inset: 0;
+    z-index: 51;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 1rem;
+    cursor: default;
+}
+
+.card-wrapper.active .card {
+    width: 100%;
+    max-width: 28rem;
+    height: 24rem;
+    transform: rotateY(180deg);
+}
+
+/* Backdrop */
+.backdrop {
+    position: fixed;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.5);
+    backdrop-filter: blur(4px);
+    z-index: 50;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.3s ease;
+}
+
+.backdrop.active {
+    opacity: 1;
+    pointer-events: all;
+}
+
+/* Responsive design */
+@media (max-width: 768px) {
+    .title {
+        font-size: 2rem;
+    }
+
+    .cards-grid {
+        grid-template-columns: 1fr;
+        gap: 1rem;
+    }
+
+    .card {
+        height: 14rem;
+    }
+
+    .card-wrapper.active .card {
+        height: 20rem;
+    }
+
+    .message > p:first-child {
+        font-size: 1.125rem;
+    }
+}
